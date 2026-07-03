@@ -1178,36 +1178,37 @@
 
       <div class="project">
         <div class="project-visual visual-mi">
-          <div class="project-visual-label">Causal Inference · Cardiology</div>
+          <div class="project-visual-label">Classification · Clustering · Cardiology</div>
         </div>
         <div class="project-content">
           <div class="project-meta">
-            <span class="flagship-badge">In Progress</span><span>June 2026</span>
+            <span class="flagship-badge">Completed</span><span>June 2026</span>
           </div>
-          <h3>Who Benefits Most from Cardiovascular Risk Interventions?</h3>
+          <h3>Predicting Myocardial Infarction and Identifying High-Risk Profiles</h3>
           <p class="project-clinical">
-            Predicting Myocardial Infarction and Identifying the High-risk Profiles<em>treatment effect</em>
-            — identifying which patients would actually benefit from intervention.
+            A team MADS project combining supervised classification and unsupervised clustering to identify individuals at risk of myocardial infarction and surface distinct high-risk patient profiles.
           </p>
           <div class="project-pai">
             <div class="pai-row">
               <div class="pai-label">Problem</div>
-              <div class="pai-text">Standard risk models predict <em>who is at risk</em>, not <em>who responds to treatment</em> — leading to interventions that miss the patients they would help most.</div>
+              <div class="pai-text">Heart attacks remain a leading cause of death in the US. Traditional risk models produce a single score but rarely explain <em>which patient profiles</em> drive elevated risk — leaving population health strategies with prediction but limited direction for targeted intervention.</div>
             </div>
             <div class="pai-row">
               <div class="pai-label">Approach</div>
-              <div class="pai-text">Uplift modeling using causal inference techniques to estimate individual treatment effects, separating responders from those who would do well either way.</div>
+              <div class="pai-text">Supervised classification (Logistic Regression, Random Forest, XGBoost) with SHAP-based feature importance, ablation, sensitivity, and failure mode analysis — combined with unsupervised clustering (K-Prototypes, GMM) using the CDC's Behavioral Risk Factor Surveillance System (2024).</div>
             </div>
             <div class="pai-row">
               <div class="pai-label">Impact</div>
-              <div class="pai-text">A precision medicine framework that targets cardiovascular interventions to the patients most likely to benefit — a model for value-based care.</div>
+              <div class="pai-text">An interpretable risk framework that surfaces distinct high-risk profiles — informing targeted screening, patient outreach, and prevention-focused population health strategies.</div>
             </div>
           </div>
           <div class="project-tech">
-            <span class="tech-tag">Uplift Modeling</span>
-            <span class="tech-tag">Causal Inference</span>
-            <span class="tech-tag">scikit-learn</span>
-            <span class="tech-tag">CausalML</span>
+            <span class="tech-tag">Logistic Regression</span>
+            <span class="tech-tag">Random Forest</span>
+            <span class="tech-tag">XGBoost</span>
+            <span class="tech-tag">SHAP</span>
+            <span class="tech-tag">K-Prototypes</span>
+            <span class="tech-tag">GMM</span>
           </div>
           <div class="project-links">
             <a href="https://github.com/mfebus/predicting-myocardial-infarction" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
