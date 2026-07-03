@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Maria Febus — Clinical Data Scientist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a1929;
+    --ink-soft: #1e3a5f;
+    --paper: #fbfaf6;
+    --paper-warm: #f4f1ea;
+    --accent: #c8553d;
+    --accent-soft: #e8a598;
+    --sage: #5a7a6c;
+    --gold: #b8924a;
+    --line: #d4cfc4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter Tight', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* Subtle paper texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(184, 146, 74, 0.03) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(90, 122, 108, 0.04) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1.25rem 2rem;
+    background: rgba(251, 250, 246, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 400;
+    transition: color 0.2s;
+    position: relative;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent);
+    transition: width 0.3s;
+  }
+
+  .nav-links a:hover::after { width: 100%; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 0 4rem;
+    position: relative;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .hero-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.1s forwards;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.25s forwards;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 300;
+  }
+
+  .hero-bio {
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    margin-bottom: 2.5rem;
+    max-width: 540px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.55s forwards;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.9rem 1.6rem;
+    border-radius: 2px;
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition: all 0.25s;
+    border: 1px solid transparent;
+  }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .btn-primary:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+  }
+
+  .btn-secondary:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  /* PHOTO */
+  .hero-photo {
+    position: relative;
+    opacity: 0;
+    animation: fadeIn 1s 0.6s forwards;
+  }
+
+  .photo-frame {
+    aspect-ratio: 4 / 5;
+    background: linear-gradient(135deg, var(--paper-warm), var(--line));
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+      0 20px 60px -20px rgba(10, 25, 41, 0.25),
+      0 1px 3px rgba(10, 25, 41, 0.08);
+  }
+
+  .photo-placeholder {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--ink-soft);
+    text-align: center;
+    padding: 2rem;
+    line-height: 1.8;
+  }
+
+  .photo-frame::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    right: 12px;
+    bottom: 12px;
+    border: 1px solid var(--accent);
+    z-index: -1;
+    border-radius: 4px;
+  }
+
+  .photo-caption {
+    margin-top: 1.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--ink-soft);
+    text-align: center;
+  }
+
+  /* SECTIONS */
+  section { padding: 7rem 0; position: relative; }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    margin-bottom: 3rem;
+    max-width: 800px;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 300;
+  }
+
+  /* ABOUT */
+  .about {
+    background: var(--paper-warm);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border-left: 1px solid var(--line);
+    padding-left: 2rem;
+  }
+
+  .stat {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .stat:last-child { border-bottom: none; }
+
+  .stat-number {
+    font-family: 'Fraunces', serif;
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+    margin-top: 0.5rem;
+  }
+
+  .about-text p {
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+    margin-bottom: 1.4rem;
+  }
+
+  .about-text p:first-child::first-letter {
+    font-family: 'Fraunces', serif;
+    font-size: 4rem;
+    float: left;
+    line-height: 0.85;
+    margin: 0.4rem 0.6rem 0 0;
+    color: var(--accent);
+    font-weight: 400;
+  }
+
+  /* EXPERIENCE */
+  .experience-intro {
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+    max-width: 720px;
+    margin-bottom: 3rem;
+  }
+
+  .experience-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .exp-card {
+    padding: 2rem;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--gold);
+    border-radius: 2px;
+    transition: all 0.3s;
+    position: relative;
+  }
+
+  .exp-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px -10px rgba(10, 25, 41, 0.12);
+    border-left-color: var(--accent);
+  }
+
+  .exp-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+    margin-bottom: 0.6rem;
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+  }
+
+  .exp-meta .exp-dot {
+    color: var(--gold);
+  }
+
+  .exp-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.01em;
+  }
+
+  .exp-role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    margin-bottom: 1rem;
+  }
+
+  .exp-impact {
+    font-size: 0.98rem;
+    color: var(--ink-soft);
+    margin-bottom: 1.2rem;
+    line-height: 1.65;
+  }
+
+  .exp-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .exp-skill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    border-radius: 2px;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    gap: 3rem;
+  }
+
+  .project {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 3rem;
+    align-items: start;
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--line);
+    transition: all 0.3s;
+  }
+
+  .project:hover { transform: translateX(4px); }
+
+  .project-visual {
+    aspect-ratio: 4 / 3;
+    background: var(--ink);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Project visual variations */
+  .visual-flagship {
+    background:
+      linear-gradient(135deg, #0a1929 0%, #1e3a5f 100%);
+  }
+
+  .visual-flagship::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 25% 30%, rgba(200, 85, 61, 0.4) 0%, transparent 25%),
+      radial-gradient(circle at 75% 70%, rgba(184, 146, 74, 0.3) 0%, transparent 25%),
+      radial-gradient(circle at 50% 50%, rgba(90, 122, 108, 0.3) 0%, transparent 30%);
+  }
+
+  .visual-cnn {
+    background:
+      repeating-linear-gradient(45deg, #1e3a5f, #1e3a5f 12px, #0a1929 12px, #0a1929 24px);
+  }
+
+  .visual-cnn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(232, 165, 152, 0.5) 0%, transparent 50%);
+  }
+
+  .visual-mi {
+    background: linear-gradient(180deg, #0a1929 0%, #1e3a5f 100%);
+  }
+
+  .visual-mi::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 2px;
+    background: var(--accent);
+    box-shadow: 0 0 20px var(--accent);
+    animation: pulse 2s ease-in-out infinite;
+    transform-origin: center;
+  }
+
+  .visual-bio {
+    background: linear-gradient(135deg, #5a7a6c 0%, #1e3a5f 100%);
+  }
+
+  .visual-bio::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 30% 40%, rgba(232, 165, 152, 0.4) 0%, transparent 20%),
+      radial-gradient(circle at 70% 60%, rgba(232, 165, 152, 0.4) 0%, transparent 20%),
+      radial-gradient(circle at 50% 80%, rgba(232, 165, 152, 0.3) 0%, transparent 15%);
+  }
+
+  .project-visual-label {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--paper);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    z-index: 2;
+    background: rgba(10, 25, 41, 0.6);
+    padding: 0.4rem 0.7rem;
+    border-radius: 2px;
+    backdrop-filter: blur(4px);
+  }
+
+  .project-content { padding-top: 0.5rem; }
+
+  .project-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+    margin-bottom: 0.8rem;
+  }
+
+  .project-meta .flagship-badge {
+    background: var(--accent);
+    color: var(--paper);
+    padding: 0.25rem 0.6rem;
+    border-radius: 2px;
+    letter-spacing: 0.08em;
+  }
+
+  .project h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.85rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  .project-clinical {
+    font-size: 1.02rem;
+    color: var(--ink-soft);
+    margin-bottom: 1.2rem;
+  }
+
+  /* Problem · Approach · Impact structure */
+  .project-pai {
+    display: grid;
+    gap: 0.9rem;
+    margin-bottom: 1.4rem;
+    padding: 1.2rem 1.4rem;
+    background: var(--paper-warm);
+    border-left: 2px solid var(--gold);
+    border-radius: 2px;
+  }
+
+  .pai-row {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .pai-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    padding-top: 0.2rem;
+  }
+
+  .pai-text {
+    font-size: 0.95rem;
+    color: var(--ink);
+    line-height: 1.55;
+  }
+
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .tech-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    padding: 0.3rem 0.7rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    border-radius: 2px;
+  }
+
+  .project-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .project-link {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 2px;
+    transition: all 0.2s;
+  }
+
+  .project-link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  /* PHILOSOPHY */
+  .philosophy {
+    background: var(--paper-warm);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .philosophy-intro {
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+    max-width: 720px;
+    margin-bottom: 3rem;
+  }
+
+  .philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .phil-card {
+    padding: 2rem;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    position: relative;
+    transition: all 0.3s;
+  }
+
+  .phil-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px -10px rgba(10, 25, 41, 0.1);
+  }
+
+  .phil-number {
+    font-family: 'Fraunces', serif;
+    font-size: 2.4rem;
+    font-weight: 300;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 1rem;
+    font-style: italic;
+  }
+
+  .phil-card h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.35rem;
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+    letter-spacing: -0.01em;
+  }
+
+  .phil-card p {
+    font-size: 0.97rem;
+    color: var(--ink-soft);
+    line-height: 1.65;
+  }
+
+  /* CREDENTIALS */
+  .credentials {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .credentials .section-label { color: var(--accent-soft); }
+  .credentials .section-label::before { background: var(--accent-soft); }
+  .credentials .section-title em { color: var(--accent-soft); }
+
+  .creds-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+  }
+
+  .cred-card {
+    padding: 2rem;
+    border: 1px solid rgba(212, 207, 196, 0.15);
+    border-radius: 2px;
+    transition: all 0.3s;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .cred-card:hover {
+    border-color: var(--accent);
+    background: rgba(200, 85, 61, 0.05);
+  }
+
+  .cred-status {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent-soft);
+    margin-bottom: 0.6rem;
+  }
+
+  .cred-card h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+  }
+
+  .cred-card p {
+    font-size: 0.9rem;
+    color: rgba(251, 250, 246, 0.7);
+  }
+
+  /* CONTACT */
+  .contact {
+    text-align: center;
+    padding: 8rem 0;
+  }
+
+  .contact .section-label { justify-content: center; }
+  .contact .section-label::before { display: none; }
+
+  .contact-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 400;
+    line-height: 1.1;
+    margin: 0 auto 2rem;
+    max-width: 800px;
+    letter-spacing: -0.015em;
+  }
+
+  .contact-title em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 300;
+  }
+
+  .contact-email {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 4px;
+    transition: all 0.2s;
+  }
+
+  .contact-email:hover { color: var(--accent); }
+
+  .contact-socials {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2.5rem;
+  }
+
+  .contact-socials a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    transition: color 0.2s;
+  }
+
+  .contact-socials a:hover { color: var(--accent); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 2rem 0;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--ink-soft);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hero-grid, .about-grid, .project {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    .experience-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .philosophy-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .pai-row {
+      grid-template-columns: 1fr;
+      gap: 0.3rem;
+    }
+    .hero { padding: 7rem 0 3rem; }
+    section { padding: 5rem 0; }
+    .about-stats { border-left: none; padding-left: 0; border-top: 1px solid var(--line); padding-top: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">Maria <span>Febus</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#philosophy">Philosophy</a></li>
+      <li><a href="#credentials">Credentials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-tag">Healthcare Data Scientist / Sr Technology Project Manager</div>
+        <h1>Bridging <em>healthcare experience</em> with applied <em>data science & AI</em>.</h1>
+        <p class="hero-bio">
+          Senior PM with 15+ years in pharmaceutical supply chain and R&D, now building
+          healthcare AI systems that combine machine learning, agentic architectures, and a
+          working knowledge of how pharma R&D and supply chain organizations actually operate.
+        </p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">View Portfolio</a>
+          <a href="#experience" class="btn btn-secondary">View Experience</a>
+          <a href="#" class="btn btn-secondary">Download Resume</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <div class="photo-frame">
+          <img src="profile.jpeg" alt="Maria Febus" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <div class="photo-caption">— Ann Arbor, MI · Masters of Applied Data Science and AI '26</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="section-label">About</div>
+    <h2 class="section-title">From program leadership to <em>applied AI</em>.</h2>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I spent over fifteen years inside Johnson & Johnson's pharmaceutical supply chain
+          and R&D organizations, leading programs where operational excellence, cross-functional
+          collaboration, and program delivery defined the work. I learned how complex healthcare
+          organizations actually run — and where data could make them run better.
+        </p>
+        <p>
+          Then I went back to school. The University of Michigan's Masters of Applied Data
+          Science and AI is teaching me to build the systems I used to manage:
+          machine learning pipelines, deep learning models, agentic AI architectures — but
+          always with the healthcare context that determines whether a model is actually useful.
+        </p>
+        <p>
+          I'm looking for healthcare data science and AI project leadership roles where domain
+          expertise matters as much as model performance. Where understanding how
+          pharmaceutical and healthcare organizations actually operate is a feature, not a footnote.
+        </p>
+      </div>
+      <div class="about-stats">
+        <div class="stat">
+          <div class="stat-number">15+</div>
+          <div class="stat-label">Years at J&J — supply chain & R&D</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">4</div>
+          <div class="stat-label">Portfolio projects</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">2026</div>
+          <div class="stat-label">MS graduation · Aug</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">EN/ES</div>
+          <div class="stat-label">Bilingual</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-label">Selected Experience</div>
+    <h2 class="section-title">Over fifteen years leading programs at <em>Johnson & Johnson</em>.</h2>
+    <p class="experience-intro">
+      Over 15 years leading complex, cross-functional programs across pharmaceutical supply
+      chain and R&D at Johnson & Johnson. A few highlights that shaped how I think about
+      healthcare AI today.
+    </p>
+
+    <div class="experience-grid">
+
+      <!--
+        ═══════════════════════════════════════════════════════════════
+        EXPERIENCE CARD TEMPLATE — REPLACE PLACEHOLDER CONTENT BELOW
+        ═══════════════════════════════════════════════════════════════
+        For each card, fill in:
+          • Dates (e.g., "2020–2024" or "2018–Present")
+          • Function/Team (e.g., "Supply Chain", "R&D")
+          • Program/Initiative Name (the headline)
+          • Your Role (e.g., "Senior Program Manager")
+          • Impact paragraph (2-3 sentences with numbers where possible)
+          • 3-5 skill tags
+      -->
+
+      <div class="exp-card">
+        <div class="exp-meta">
+          <span>[ Dates ]</span>
+          <span class="exp-dot">•</span>
+          <span>[ Function / Team ]</span>
+        </div>
+        <h3>[ Program or Initiative Name ]</h3>
+        <div class="exp-role">[ Your Role / Title ]</div>
+        <p class="exp-impact">
+          [ 2–3 sentences describing what you led, what changed, and the impact.
+          Include quantified outcomes where possible — $ saved, % improvement,
+          team size, scope, timeline, products launched. ]
+        </p>
+        <div class="exp-skills">
+          <span class="exp-skill">[ Skill 1 ]</span>
+          <span class="exp-skill">[ Skill 2 ]</span>
+          <span class="exp-skill">[ Skill 3 ]</span>
+          <span class="exp-skill">[ Skill 4 ]</span>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-meta">
+          <span>[ Dates ]</span>
+          <span class="exp-dot">•</span>
+          <span>[ Function / Team ]</span>
+        </div>
+        <h3>[ Program or Initiative Name ]</h3>
+        <div class="exp-role">[ Your Role / Title ]</div>
+        <p class="exp-impact">
+          [ 2–3 sentences describing what you led, what changed, and the impact.
+          Include quantified outcomes where possible — $ saved, % improvement,
+          team size, scope, timeline, products launched. ]
+        </p>
+        <div class="exp-skills">
+          <span class="exp-skill">[ Skill 1 ]</span>
+          <span class="exp-skill">[ Skill 2 ]</span>
+          <span class="exp-skill">[ Skill 3 ]</span>
+          <span class="exp-skill">[ Skill 4 ]</span>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-meta">
+          <span>[ Dates ]</span>
+          <span class="exp-dot">•</span>
+          <span>[ Function / Team ]</span>
+        </div>
+        <h3>[ Program or Initiative Name ]</h3>
+        <div class="exp-role">[ Your Role / Title ]</div>
+        <p class="exp-impact">
+          [ 2–3 sentences describing what you led, what changed, and the impact.
+          Include quantified outcomes where possible — $ saved, % improvement,
+          team size, scope, timeline, products launched. ]
+        </p>
+        <div class="exp-skills">
+          <span class="exp-skill">[ Skill 1 ]</span>
+          <span class="exp-skill">[ Skill 2 ]</span>
+          <span class="exp-skill">[ Skill 3 ]</span>
+          <span class="exp-skill">[ Skill 4 ]</span>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-meta">
+          <span>[ Dates ]</span>
+          <span class="exp-dot">•</span>
+          <span>[ Function / Team ]</span>
+        </div>
+        <h3>[ Program or Initiative Name ]</h3>
+        <div class="exp-role">[ Your Role / Title ]</div>
+        <p class="exp-impact">
+          [ 2–3 sentences describing what you led, what changed, and the impact.
+          Include quantified outcomes where possible — $ saved, % improvement,
+          team size, scope, timeline, products launched. ]
+        </p>
+        <div class="exp-skills">
+          <span class="exp-skill">[ Skill 1 ]</span>
+          <span class="exp-skill">[ Skill 2 ]</span>
+          <span class="exp-skill">[ Skill 3 ]</span>
+          <span class="exp-skill">[ Skill 4 ]</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label">Selected Work</div>
+    <h2 class="section-title">Four projects spanning <em>epidemiology</em>, causal inference, supply chain, and <em>patient behavior</em>.</h2>
+
+    <div class="projects-grid">
+
+      <div class="project">
+        <div class="project-visual visual-bio">
+          <div class="project-visual-label">Epidemiology · Public Health</div>
+        </div>
+        <div class="project-content">
+          <div class="project-meta">
+            <span class="flagship-badge">Completed</span>
+            <span>February 2026</span>
+          </div>
+          <h3>Diabetes Prevalence & Chronic Disease Correlation</h3>
+          <p class="project-clinical">
+            A cross-state analysis of diabetes prevalence and its correlation with other chronic
+            conditions across all 50 US states.
+          </p>
+          <div class="project-pai">
+            <div class="pai-row">
+              <div class="pai-label">Problem</div>
+              <div class="pai-text">Population-level chronic disease patterns are buried in state-level public health data, making it hard to target prevention strategy and program design.</div>
+            </div>
+            <div class="pai-row">
+              <div class="pai-label">Approach</div>
+              <div class="pai-text">Cross-state correlation analysis combining diabetes prevalence with comorbidity indicators, surfaced through statistical analysis and data visualization.</div>
+            </div>
+            <div class="pai-row">
+              <div class="pai-label">Impact</div>
+              <div class="pai-text">Patterns that inform payer risk modeling, chronic care program design, and population health prioritization.</div>
+            </div>
+          </div>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Pandas</span>
+            <span class="tech-tag">Statistical Analysis</span>
+            <span class="tech-tag">Data Visualization</span>
+          </div>
+          <div class="project-links">
+            <a href="#" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
+            <a href="#" target="_blank" rel="noopener" class="project-link">Read Case Study →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-visual visual-mi" style="background-image: url('mi-heart.png'); background-size: cover; background-position: center;">
+          <div class="project-visual-label">Classification · Clustering · Cardiology</div>
+        </div>
+        <div class="project-content">
+          <div class="project-meta">
+            <span class="flagship-badge">Completed</span>
+            <span>June 2026</span>
+          </div>
+          <h3>Predicting Myocardial Infarction and Identifying High-Risk Profiles</h3>
+          <p class="project-clinical">
+            A team MADS project combining supervised classification and unsupervised clustering to identify
+            individuals at risk of prior myocardial infarction and surface distinct high-risk patient profiles.
+          </p>
+          <div class="project-pai">
+            <div class="pai-row">
+              <div class="pai-label">Problem</div>
+              <div class="pai-text">Heart attacks remain a leading cause of death in the US. Traditional risk models produce a single score but rarely explain <em>which patient profiles</em> drive elevated risk — leaving population health strategies with prediction but limited direction for targeted intervention.</div>
+            </div>
+            <div class="pai-row">
+              <div class="pai-label">Approach</div>
+              <div class="pai-text">Supervised classification (Logistic Regression, Random Forest, XGBoost) with SHAP-based feature importance, ablation, sensitivity, and failure mode analysis — combined with unsupervised clustering (K-Prototypes, GMM) using the CDC's Behavioral Risk Factor Surveillance System (2024).</div>
+            </div>
+            <div class="pai-row">
+              <div class="pai-label">Impact</div>
+              <div class="pai-text">An interpretable risk framework that surfaces distinct high-risk profiles — informing targeted screening, patient outreach, and prevention-focused population health strategies.</div>
+            </div>
+          </div>
+          <div class="project-tech">
+            <span class="tech-tag">Logistic Regression</span>
+            <span class="tech-tag">Random Forest</span>
+            <span class="tech-tag">XGBoost</span>
+            <span class="tech-tag">SHAP</span>
+            <span class="tech-tag">K-Prototypes</span>
+            <span class="tech-tag">GMM</span>
+          </div>
+          <div class="project-links">
+            <a href="#" target="_blank" rel="noopener" class="project-link">Coming June 2026</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-visual visual-cnn">
+          <div class="project-visual-label">Supply Chain · Pharma Operations</div>
+        </div>
+        <div class="project-content">
+          <div class="project-meta">
+            <span>Expected July 2026</span>
+          </div>
+          <h3>Predicting Drug Shortages Before They Happen</h3>
+          <p class="project-clinical">
+            A classification model that flags pharmaceutical products at elevated risk of supply
+            shortage — a real industry problem I've watched unfold from the inside.
+          </p>
+          <div class="project-pai">
+            <div class="pai-row">
+              <div class="pai-label">Problem</div>
+              <div class="pai-text">Drug shortages disrupt patient care and cost the healthcare system billions, yet they're often identified only after they've begun — too late for proactive mitigation.</div>
+            </div>
+            <div class="pai-row">
+              <div class="pai-label">Approach</div>
+              <div class="pai-text">Classification model trained on FDA shortage data, with features engineered from manufacturer concentration, drug class, sterile-injectable flags, and supply chain signals.</div>
+            </div>
+            <div class="pai-row">
+              <div class="pai-label">Impact</div>
+              <div class="pai-text">Early-warning capability that supports proactive inventory planning, alternative sourcing, and patient access continuity — built with domain feature engineering that pure-DS candidates cannot replicate.</div>
+            </div>
+          </div>
+          <div class="project-tech">
+            <span class="tech-tag">XGBoost</span>
+            <span class="tech-tag">FDA Open Data</span>
+            <span class="tech-tag">Feature Engineering</span>
+            <span class="tech-tag">SHAP</span>
+          </div>
+          <div class="project-links">
+            <a href="#" target="_blank" rel="noopener" class="project-link">Coming July 2026</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-visual visual-flagship">
+          <div class="project-visual-label">ML · Patient Behavior</div>
+        </div>
+        <div class="project-content">
+          <div class="project-meta">
+            <span class="flagship-badge">Capstone</span>
+            <span>Expected August 2026</span>
+          </div>
+          <h3>Medication Adherence Segmentation</h3>
+          <p class="project-clinical">
+            A combined supervised and unsupervised learning approach to segment patients by
+            medication adherence patterns.
+          </p>
+          <div class="project-pai">
+            <div class="pai-row">
+              <div class="pai-label">Problem</div>
+              <div class="pai-text">Non-adherence costs the US healthcare system over $300B annually, yet most interventions treat all non-adherent patients alike — missing the distinct behavioral patterns that drive different solutions.</div>
+            </div>
+            <div class="pai-row">
+              <div class="pai-label">Approach</div>
+              <div class="pai-text">Combined unsupervised clustering to discover adherence archetypes, then supervised classification to assign new patients to the segment most likely to predict their behavior.</div>
+            </div>
+            <div class="pai-row">
+              <div class="pai-label">Impact</div>
+              <div class="pai-text">A foundation for tailored adherence interventions — informing pharmacy programs, patient support design, and real-world evidence studies with behavioral nuance most models miss.</div>
+            </div>
+          </div>
+          <div class="project-tech">
+            <span class="tech-tag">Clustering</span>
+            <span class="tech-tag">Classification</span>
+            <span class="tech-tag">Feature Engineering</span>
+            <span class="tech-tag">scikit-learn</span>
+          </div>
+          <div class="project-links">
+            <a href="#" target="_blank" rel="noopener" class="project-link">Coming August 2026</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy" id="philosophy">
+  <div class="container">
+    <div class="section-label">Healthcare + AI Philosophy</div>
+    <h2 class="section-title">How I think about <em>building AI</em> in healthcare.</h2>
+    <p class="philosophy-intro">
+      Models in healthcare are not finished when they're accurate. They're finished when they
+      can be trusted, explained, and used responsibly in real clinical and operational workflows.
+      A few principles that guide how I approach this work.
+    </p>
+
+    <div class="philosophy-grid">
+
+      <div class="phil-card">
+        <div class="phil-number">01</div>
+        <h4>Explainable AI is not optional</h4>
+        <p>
+          A model that can't tell a clinician <em>why</em> doesn't belong in a clinical decision.
+          Interpretability isn't a feature — it's a precondition for trust, adoption, and safe
+          deployment in healthcare.
+        </p>
+      </div>
+
+      <div class="phil-card">
+        <div class="phil-number">02</div>
+        <h4>Patient-centered, always</h4>
+        <p>
+          The patient is the end user, even when they're invisible from the model.
+          Every architectural choice should be measured against whether it ultimately serves
+          patient outcomes — not algorithmic elegance or organizational convenience.
+        </p>
+      </div>
+
+      <div class="phil-card">
+        <div class="phil-number">03</div>
+        <h4>Operational realism over benchmark theater</h4>
+        <p>
+          A model that wins on a test set but fails inside a clinical workflow has failed.
+          Performance on paper means little if it can't be operationalized — monitored,
+          maintained, and trusted by the people who use it daily.
+        </p>
+      </div>
+
+      <div class="phil-card">
+        <div class="phil-number">04</div>
+        <h4>AI augments judgment, never replaces it</h4>
+        <p>
+          The most valuable healthcare AI doesn't make decisions for clinicians and operators —
+          it makes their decisions sharper. Decision support is a partnership between the model
+          and the human expertise that contextualizes its output.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section class="credentials" id="credentials">
+  <div class="container">
+    <div class="section-label">Credentials</div>
+    <h2 class="section-title">Education and certifications, in <em>progress</em> and complete.</h2>
+
+    <div class="creds-grid">
+      <div class="cred-card">
+        <div class="cred-status">In Progress · Aug 2026</div>
+        <h4>M.S. Applied Data Science and AI</h4>
+        <p>University of Michigan — School of Information</p>
+      </div>
+      <div class="cred-card">
+        <div class="cred-status">Complete · 2025</div>
+        <h4>MIT — AI in Healthcare</h4>
+        <p>Fundamentals and Applications · MIT xPRO</p>
+      </div>
+      <div class="cred-card">
+        <div class="cred-status">Complete · 2025</div>
+        <h4>MIT — Applied Data Science</h4>
+        <p>Leveraging AI for Decision-Making · MIT Professional Ed.</p>
+      </div>
+      <div class="cred-card">
+        <div class="cred-status">In Progress</div>
+        <h4>CPMAI Certification</h4>
+        <p>Certified Professional in Managing AI · PMI</p>
+      </div>
+      <div class="cred-card">
+        <div class="cred-status">In Progress</div>
+        <h4>Agentic AI Professional Certificate</h4>
+        <p>Johns Hopkins University</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-label">Get in Touch</div>
+    <h2 class="contact-title">Let's talk about <em>healthcare AI</em>.</h2>
+    <a href="mailto:mfebus@gmail.com" class="contact-email">mfebus@gmail.com</a>
+    <div class="contact-socials">
+      <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="#" target="_blank" rel="noopener">GitHub</a>
+      <a href="#" target="_blank" rel="noopener">Resume PDF</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    © 2026 Maria Febus · Built with care · Last updated May 2026
+  </div>
+</footer>
+
+</body>
+</html>
