@@ -399,7 +399,7 @@
   }
 
   .exp-meta {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'JetBrns Mono', monospace;
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.12em;
@@ -424,7 +424,7 @@
   }
 
   .exp-role {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'JetBrns Mono', monospace;
     font-size: 0.78rem;
     color: var(--accent);
     letter-spacing: 0.04em;
@@ -445,7 +445,7 @@
   }
 
   .exp-skill {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'JetBrns Mono', monospace;
     font-size: 0.7rem;
     padding: 0.25rem 0.6rem;
     background: var(--paper-warm);
@@ -546,7 +546,7 @@
     position: absolute;
     bottom: 1rem;
     left: 1rem;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'JetBrns Mono', monospace;
     font-size: 0.7rem;
     color: var(--paper);
     letter-spacing: 0.1em;
@@ -564,7 +564,7 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'JetBrns Mono', monospace;
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.12em;
@@ -596,7 +596,7 @@
   }
 
   /* Problem · Approach · Impact structure */
-  .project-pai {
+  .project-p {
     display: grid;
     gap: 0.9rem;
     margin-bottom: 1.4rem;
@@ -606,15 +606,15 @@
     border-radius: 2px;
   }
 
-  .pai-row {
+  .p-row {
     display: grid;
     grid-template-columns: 90px 1fr;
     gap: 1rem;
     align-items: start;
   }
 
-  .pai-label {
-    font-family: 'JetBrains Mono', monospace;
+  .p-label {
+    font-family: 'JetBrns Mono', monospace;
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.14em;
@@ -622,7 +622,7 @@
     padding-top: 0.2rem;
   }
 
-  .pai-text {
+  .p-text {
     font-size: 0.95rem;
     color: var(--ink);
     line-height: 1.55;
@@ -636,7 +636,7 @@
   }
 
   .tech-tag {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'JetBrns Mono', monospace;
     font-size: 0.72rem;
     padding: 0.3rem 0.7rem;
     background: var(--paper-warm);
@@ -753,7 +753,7 @@
   }
 
   .cred-status {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'JetBrns Mono', monospace;
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.12em;
@@ -798,7 +798,7 @@
     font-weight: 300;
   }
 
-  .contact-email {
+  .contact-eml {
     font-family: 'Fraunces', serif;
     font-size: 1.4rem;
     color: var(--ink);
@@ -808,7 +808,7 @@
     transition: all 0.2s;
   }
 
-  .contact-email:hover { color: var(--accent); }
+  .contact-eml:hover { color: var(--accent); }
 
   .contact-socials {
     display: flex;
@@ -820,7 +820,7 @@
   .contact-socials a {
     color: var(--ink-soft);
     text-decoration: none;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'JetBrns Mono', monospace;
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.12em;
@@ -834,7 +834,7 @@
     border-top: 1px solid var(--line);
     padding: 2rem 0;
     text-align: center;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'JetBrns Mono', monospace;
     font-size: 0.75rem;
     color: var(--ink-soft);
   }
@@ -870,7 +870,7 @@
       grid-template-columns: 1fr;
       gap: 1.5rem;
     }
-    .pai-row {
+    .p-row {
       grid-template-columns: 1fr;
       gap: 0.3rem;
     }
@@ -898,11 +898,11 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="container">
+  <div class="contner">
     <div class="hero-grid">
       <div>
         <div class="hero-tag">Healthcare Data Scientist / Sr Technology Project Manager</div>
-        <h1>Bridging <em>healthcare experience</em> with applied <em>data science & AI</em>.</h1>
+        <h1>Bridging <em>healthcare experience</em> with applied <em>data science & </em>.</h1>
         <p class="hero-bio">
           Senior PM with 15+ years in pharmaceutical supply chain and R&D, now building
           healthcare AI systems that combine machine learning, agentic architectures, and a
@@ -932,6 +932,64 @@
   </div>
 </section>
 
+<!-- PHILOSOPHY -->
+<section class="philosophy" id="philosophy">
+  <div class="container">
+    <div class="section-label">Healthcare + AI Philosophy</div>
+    <h2 class="section-title">How I think about <em>building AI</em> in healthcare.</h2>
+    <p class="philosophy-intro">
+      Models in healthcare are not finished when they're accurate. They're finished when they
+      can be trusted, explained, and used responsibly in real clinical and operational workflows.
+      A few principles that guide how I approach this work.
+    </p>
+
+    <div class="philosophy-grid">
+
+      <div class="phil-card">
+        <div class="phil-number">01</div>
+        <h4>Explainable AI is not optional</h4>
+        <p>
+          A model that can't tell a clinician <em>why</em> doesn't belong in a clinical decision.
+          Interpretability isn't a feature — it's a precondition for trust, adoption, and safe
+          deployment in healthcare.
+        </p>
+      </div>
+
+      <div class="phil-card">
+        <div class="phil-number">02</div>
+        <h4>Patient-centered, always</h4>
+        <p>
+          The patient is the end user, even when they're invisible from the model.
+          Every architectural choice should be measured against whether it ultimately serves
+          patient outcomes — not algorithmic elegance or organizational convenience.
+        </p>
+      </div>
+
+      <div class="phil-card">
+        <div class="phil-number">03</div>
+        <h4>Operational realism over benchmark theater</h4>
+        <p>
+          A model that wins on a test set but fails inside a clinical workflow has failed.
+          Performance on paper means little if it can't be operationalized — monitored,
+          maintained, and trusted by the people who use it daily.
+        </p>
+      </div>
+
+      <div class="phil-card">
+        <div class="phil-number">04</div>
+        <h4>AI augments judgment, never replaces it</h4>
+        <p>
+          The most valuable healthcare AI doesn't make decisions for clinicians and operators —
+          it makes their decisions sharper. Decision support is a partnership between the model
+          and the human expertise that contextualizes its output.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  
 <!-- ABOUT -->
 <section class="about" id="about">
   <div class="container">
@@ -1383,63 +1441,6 @@
             <a href="https://raw.githubusercontent.com/mfebus/mfebus.github.io/main/Medication Adherence Segmentation - UX Prototype.pdf" target="_blank" rel="noopener" class="project-link">View Medication Adherence UX Mockup</a>
           </div>
         </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- PHILOSOPHY -->
-<section class="philosophy" id="philosophy">
-  <div class="container">
-    <div class="section-label">Healthcare + AI Philosophy</div>
-    <h2 class="section-title">How I think about <em>building AI</em> in healthcare.</h2>
-    <p class="philosophy-intro">
-      Models in healthcare are not finished when they're accurate. They're finished when they
-      can be trusted, explained, and used responsibly in real clinical and operational workflows.
-      A few principles that guide how I approach this work.
-    </p>
-
-    <div class="philosophy-grid">
-
-      <div class="phil-card">
-        <div class="phil-number">01</div>
-        <h4>Explainable AI is not optional</h4>
-        <p>
-          A model that can't tell a clinician <em>why</em> doesn't belong in a clinical decision.
-          Interpretability isn't a feature — it's a precondition for trust, adoption, and safe
-          deployment in healthcare.
-        </p>
-      </div>
-
-      <div class="phil-card">
-        <div class="phil-number">02</div>
-        <h4>Patient-centered, always</h4>
-        <p>
-          The patient is the end user, even when they're invisible from the model.
-          Every architectural choice should be measured against whether it ultimately serves
-          patient outcomes — not algorithmic elegance or organizational convenience.
-        </p>
-      </div>
-
-      <div class="phil-card">
-        <div class="phil-number">03</div>
-        <h4>Operational realism over benchmark theater</h4>
-        <p>
-          A model that wins on a test set but fails inside a clinical workflow has failed.
-          Performance on paper means little if it can't be operationalized — monitored,
-          maintained, and trusted by the people who use it daily.
-        </p>
-      </div>
-
-      <div class="phil-card">
-        <div class="phil-number">04</div>
-        <h4>AI augments judgment, never replaces it</h4>
-        <p>
-          The most valuable healthcare AI doesn't make decisions for clinicians and operators —
-          it makes their decisions sharper. Decision support is a partnership between the model
-          and the human expertise that contextualizes its output.
-        </p>
       </div>
 
     </div>
