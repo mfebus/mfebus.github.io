@@ -352,13 +352,13 @@
     margin-top: 0.5rem;
   }
 
-  .about-text p {
+  .-text p {
     font-size: 1.08rem;
     color: var(--ink-soft);
     margin-bottom: 1.4rem;
   }
 
-  .about-text p:first-child::first-letter {
+  .-text p:first-child::first-letter {
     font-family: 'Fraunces', serif;
     font-size: 4rem;
     float: left;
@@ -858,7 +858,7 @@
   /* MOBILE */
   @media (max-width: 900px) {
     .nav-links { display: none; }
-    .hero-grid, .about-grid, .project {
+    .hero-grid, .-grid, .project {
       grid-template-columns: 1fr;
       gap: 3rem;
     }
@@ -876,7 +876,7 @@
     }
     .hero { padding: 7rem 0 3rem; }
     section { padding: 5rem 0; }
-    .about-stats { border-left: none; padding-left: 0; border-top: 1px solid var(--line); padding-top: 2rem; }
+    .-stats { border-left: none; padding-left: 0; border-top: 1px solid var(--line); padding-top: 2rem; }
   }
 </style>
 </head>
@@ -886,7 +886,7 @@
   <div class="nav-inner">
     <div class="nav-logo">Maria <span>Febus</span></div>
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
+      <li><a href="#">About</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#philosophy">Philosophy</a></li>
@@ -997,41 +997,61 @@
     <h2 class="section-title">From project leadership to <em>applied AI</em>.</h2>
     <div class="about-grid">
       <div class="about-text">
-  <p>
-    <strong>The value I bring is the ability to connect strategy with execution
-    and turn complex challenges into results.</strong>
-    I bring a customer- and business-focused mindset to translating healthcare
-    needs into practical AI and data opportunities, navigating complexity and
-    interdependencies, and driving disciplined execution across multiple
-    functions, stakeholders, and priorities.
-  </p>
-  <p>
-    With a <strong>global mindset</strong>, I am comfortable working across
-    organizational, functional, and geographic boundaries — bringing together
-    diverse perspectives, building strong partnerships between business and
-    technical teams, and aligning people around shared outcomes and measurable
-    business value.
-  </p>
-  <p>
-    I also believe sustainable results come from strengthening the teams around
-    the work. I foster <strong>collaboration, coaching, and mentoring</strong>,
-    and help establish practical best practices and repeatable ways of working
-    that improve execution beyond a single initiative.
-  </p>
-  <p>
-    My goal is not simply to deliver a solution, but to help organizations build
-    the capabilities needed to turn AI and data opportunities into
-    <strong>scalable, responsible solutions that deliver lasting business value.</strong>
-  </p>
-  <p>
-    I'm looking for hybrid roles that sit at the intersection of program/project
-    management, AI product management, and hands-on data science — where I can
-    shape strategy and roadmaps, translate healthcare needs into practical AI
-    solutions, and still contribute technically. My goal is to bring together
-    disciplined execution, product thinking, and applied data science to help
-    healthcare organizations turn AI opportunities into real, sustainable outcomes.
-  </p>
-</div>
+        <p>
+          <strong>The value I bring is the ability to connect strategy with execution
+          and turn complex challenges into results.</strong>
+          I bring a customer- and business-focused mindset to translating healthcare
+          needs into practical AI and data opportunities, navigating complexity and
+          interdependencies, and driving disciplined execution across multiple
+          functions, stakeholders, and priorities.
+        </p>
+        <p>
+          With a <strong>global mindset</strong>, I am comfortable working across
+          organizational, functional, and geographic boundaries — bringing together
+          diverse perspectives, building strong partnerships between business and
+          technical teams, and aligning people around shared outcomes and measurable
+          business value.
+        </p>
+        <p>
+          I also believe sustainable results come from strengthening the teams around
+          the work. I foster <strong>collaboration, coaching, and mentoring</strong>,
+          and help establish practical best practices and repeatable ways of working
+          that improve execution beyond a single initiative.
+        </p>
+        <p>
+          My goal is not simply to deliver a solution, but to help organizations build
+          the capabilities needed to turn AI and data opportunities into
+          <strong>scalable, responsible solutions that deliver lasting business value.</strong>
+        </p>
+        <p>
+          I'm looking for hybrid roles that sit at the intersection of program/project
+          management, AI product management, and hands-on data science — where I can
+          shape strategy and roadmaps, translate healthcare needs into practical AI
+          solutions, and still contribute technically. My goal is to bring together
+          disciplined execution, product thinking, and applied data science to help
+          healthcare organizations turn AI opportunities into real, sustainable outcomes.
+        </p>
+      </div>
+      <div class="about-stats">
+        <div class="stat">
+          <div class="stat-number">15+</div>
+          <div class="stat-label">Years at J&J — supply chain & R&D</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">5</div>
+          <div class="stat-label">Data Science/AI Portfolio projects</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">2026</div>
+          <div class="stat-label">MS graduation · Aug</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">EN/ES</div>
+          <div class="stat-label">Bilingual</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section> 
 <!-- EXPERIENCE -->
 <section id="experience">
