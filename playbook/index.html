@@ -66,6 +66,7 @@ nav{
 .brand-text span{color:var(--coral)}
 .nav-links{display:flex;gap:30px;list-style:none;align-items:center}
 .nav-links a{color:#fff;font-size:.92rem;opacity:.95}
+.nav-links a.disabled{opacity:.4;cursor:default;pointer-events:none}
 .nav-links a:hover{color:var(--coral-soft)}
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:10px;
@@ -354,6 +355,10 @@ footer{
     <ul class="nav-links">
       <li><a href="index.html">Playbook</a></li>
       <li><a href="artifacts-matrix.html">Artifacts</a></li>
+      <li><a href="#" class="disabled">Governance &amp; Risk</a></li>
+      <li><a href="#" class="disabled">Testing &amp; Evidence</a></li>
+      <li><a href="#" class="disabled">Roles &amp; Accountability</a></li>
+      <li><a href="#" class="disabled">Resources</a></li>
     </ul>
 
     <a class="btn btn-primary" href="artifacts-matrix.html">Get Started</a>
