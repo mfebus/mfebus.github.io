@@ -111,6 +111,12 @@ h1 em{color:var(--coral);font-weight:300}
   max-width:610px;font-size:1.08rem;color:var(--navy-2);
   line-height:1.72;margin-bottom:24px;
 }
+.trust-strip{
+  display:flex; gap:18px; flex-wrap:wrap; align-items:center; margin-bottom:26px;
+  font-family:"JetBrains Mono",monospace; font-size:.76rem; color:var(--muted);
+}
+.trust-strip span{display:flex; align-items:center; gap:6px}
+.trust-strip .dot{width:5px; height:5px; border-radius:50%; background:var(--sage); flex-shrink:0}
 .hero-actions{display:flex;gap:16px;flex-wrap:wrap}
 
 .feature-side{
@@ -353,7 +359,7 @@ footer{
     </a>
 
     <ul class="nav-links">
-      <li><a href="index.html">Playbook</a></li>
+      <li><a href="artifacts-matrix.html">Playbook</a></li>
       <li><a href="artifacts-matrix.html">Artifacts</a></li>
       <li><a href="#" class="disabled">Governance &amp; Risk</a></li>
       <li><a href="#" class="disabled">Testing &amp; Evidence</a></li>
@@ -366,7 +372,7 @@ footer{
 </nav>
 
 <div class="proto-banner">
-  <b>Prototype</b> &mdash; this is a working draft, shared for feedback and discussion. Not a finished, certified, or officially adopted framework.
+  <b>Prototype</b> &mdash; this is a working draft, shared for feedback and discussion. Not a finished, certified, or officially adopted framework. <b>Scope</b> &mdash; not intended for use as, or in the development of, a regulated medical device.
 </div>
 
 <header class="hero">
@@ -376,7 +382,8 @@ footer{
       <h1>Deliver <em>trusted AI</em>.<br>From idea to <em>impact</em>.</h1>
       <p class="hero-sub">
         A practical playbook for delivering secure, responsible and compliant AI solutions
-        that create real business and patient value.
+        that create real business and patient value. Grounded in existing research and standards.
+        Vendor-neutral by design.
       </p>
       <div class="hero-actions">
         <a href="artifacts-matrix.html" class="btn btn-dark">Explore the Lifecycle →</a>
@@ -569,7 +576,8 @@ footer{
         </div>
         <small>
           End-to-end example application with tests and evidence. A recall-optimized breast cancer detection CNN
-          that flags high-risk histopathology tissue patches for pathologist review.
+          that flags high-risk histopathology tissue patches for pathologist review. A research/portfolio project,
+          not a cleared or regulated medical device.
         </small>
       </article>
     </div>
@@ -582,14 +590,21 @@ footer{
       <div>
         <h3>Why I built this</h3>
         <p>
-          After 15+ years in validated systems and pharmaceutical technology, I kept seeing the same gap: AI governance
-          guidance that lives in policy documents and never makes it into the hands of the people actually building
-          and shipping systems. This playbook exists to close that gap &mdash; to turn principles into practice, one
-          artifact at a time.
+          Throughout my career, I've been drawn to one challenge: turning governance principles into practical
+          execution. As I moved into data science and AI, I found myself asking the same question in a new context:
+          how do we turn responsible AI guidance into everyday practice?
         </p>
         <p>
-          It's free to use because that's the point. Governance shouldn't be locked behind a paywall for the people
-          who need it most.
+          AI doesn't have a guidance problem &mdash; we have strong foundations in <b>NIST, ISO/IEC, OWASP, the EU AI
+          Act, HIPAA, GDPR, OECD</b>, and more. The challenge is translating that guidance into requirements, risk
+          assessments, design reviews, testing, deployment gates, and monitoring that teams can actually use. This
+          <b>playbook and community of practice</b> are my contribution to closing that gap &mdash; curating,
+          connecting, and translating existing guidance into practical resources, while crediting the organizations
+          behind it.
+        </p>
+        <p style="margin-top:14px; font-size:.85rem; color:var(--navy-2);">
+          <b>Responsible AI shouldn't live only in policy documents &mdash; it should be woven into everyday
+          practice.</b>
         </p>
         <div class="about-license">
           <b>License:</b> This playbook is shared under CC BY-NC 4.0 &mdash; free to use, adapt, and share with
@@ -610,6 +625,9 @@ footer{
         <p style="margin-top:14px; font-size:.85rem; color:var(--navy-2);">
           This community is just getting started &mdash; early contributors shape what it becomes.
         </p>
+        <a href="mailto:YOUR-EMAIL@example.com?subject=Joining%20the%20AI%20Solutions%20Delivery%20Playbook%20Community" class="btn btn-dark" style="margin-top:16px; display:inline-flex;">
+          Contact Me to Contribute &rarr;
+        </a>
       </div>
     </div>
   </div>
