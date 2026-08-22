@@ -261,6 +261,8 @@ a.phase:hover{transform:translateY(-3px)}
   background:var(--paper);border:1px solid var(--line);border-radius:12px;
   padding:20px;min-height:184px;box-shadow:0 8px 25px rgba(7,29,54,.04)
 }
+a.card{display:block;text-decoration:none;color:inherit;transition:transform .2s, box-shadow .2s}
+a.card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(7,29,54,.10);border-color:var(--coral)}
 .card-top{display:flex;gap:14px;align-items:flex-start}
 .card-icon{
   width:48px;height:48px;border-radius:8px;border:1px solid var(--line);
@@ -361,7 +363,7 @@ footer{
     <ul class="nav-links">
       <li><a href="artifacts-matrix.html">Playbook</a></li>
       <li><a href="artifacts-matrix.html">Artifacts</a></li>
-      <li><a href="#" class="disabled">Governance &amp; Risk</a></li>
+      <li><a href="governance-risk.html">Governance &amp; Risk</a></li>
       <li><a href="#" class="disabled">Testing &amp; Evidence</a></li>
       <li><a href="#" class="disabled">Roles &amp; Accountability</a></li>
       <li><a href="#" class="disabled">Resources</a></li>
@@ -549,7 +551,7 @@ footer{
         <small>Know who is Responsible, Accountable, Consulted, and Informed.</small>
       </article>
 
-      <article class="card">
+      <a href="governance-risk.html" class="card">
         <div class="card-top">
           <div class="card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3l7 3v5c0 4.6-2.8 8.1-7 10-4.2-1.9-7-5.4-7-10V6l7-3z"/><path d="M8.7 12l2 2 4.6-5"/></svg>
@@ -557,11 +559,11 @@ footer{
           <div>
             <div class="label">Compliance by Design</div>
             <h3>Regulatory &amp; Ethical</h3>
-            <p>Requirements built in</p>
+            <p>17 sources, clause-by-clause</p>
           </div>
         </div>
-        <small>NIST AI RMF · ISO/IEC 42001 · HIPAA · GDPR and more</small>
-      </article>
+        <small>See exactly what each regulation requires, and which artifact section addresses it &rarr;</small>
+      </a>
 
       <article class="card">
         <div class="card-top">
