@@ -111,6 +111,12 @@ h1 em{color:var(--coral);font-weight:300}
   max-width:610px;font-size:1.08rem;color:var(--navy-2);
   line-height:1.72;margin-bottom:24px;
 }
+.trust-strip{
+  display:flex; gap:18px; flex-wrap:wrap; align-items:center; margin-bottom:26px;
+  font-family:"JetBrains Mono",monospace; font-size:.76rem; color:var(--muted);
+}
+.trust-strip span{display:flex; align-items:center; gap:6px}
+.trust-strip .dot{width:5px; height:5px; border-radius:50%; background:var(--sage); flex-shrink:0}
 .hero-actions{display:flex;gap:16px;flex-wrap:wrap}
 
 .feature-side{
@@ -158,6 +164,26 @@ h1 em{color:var(--coral);font-weight:300}
   0 30px 0 rgba(216,91,61,.05),
   0 40px 0 rgba(216,91,61,.05)}
 
+.author-card{margin-top:18px;text-align:center}
+.author-photo{
+  width:230px;height:230px;border-radius:50%;object-fit:cover;
+  box-shadow:0 8px 22px rgba(7,29,54,.18);
+  margin:0 auto 18px;display:block;
+}
+.author-quote{
+  font-family:"Fraunces",serif;font-style:italic;font-size:1.05rem;
+  color:var(--navy);line-height:1.5;max-width:320px;margin:0 auto 14px;
+  position:relative;
+}
+.author-quote:before{content:"\201C";color:var(--coral);font-size:1.6rem;font-style:normal;margin-right:2px;line-height:0;vertical-align:-6px}
+.author-name{font-family:"Fraunces",serif;font-weight:600;font-size:1rem;color:var(--navy);margin-bottom:2px}
+.author-title{font-size:.82rem;color:var(--muted);margin-bottom:8px}
+.author-certs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.author-cert{
+  font-family:"JetBrains Mono",monospace;font-size:.68rem;font-weight:700;letter-spacing:.04em;
+  padding:4px 10px;border-radius:20px;border:1px solid var(--line);color:var(--navy-2);background:var(--paper-2);
+}
+
 /* LIFECYCLE */
 .lifecycle-wrap{padding:6px 0 10px;background:linear-gradient(180deg,#fffaf4 0%,var(--paper-2) 100%)}
 .lifecycle-panel{
@@ -179,6 +205,8 @@ h1 em{color:var(--coral);font-weight:300}
   gap:16px;align-items:start;position:relative
 }
 .phase{text-align:center;position:relative;padding:0 5px}
+a.phase{display:block; text-decoration:none; color:inherit; transition:transform .2s}
+a.phase:hover{transform:translateY(-3px)}
 .phase:not(:last-child):after{
   content:"→";position:absolute;right:-13px;top:26px;
   color:#7f8a94;font-size:1.45rem;font-weight:300
@@ -202,7 +230,6 @@ h1 em{color:var(--coral);font-weight:300}
 .p5{background:linear-gradient(145deg,#365d4d,#6f8f81)}
 .p6{background:linear-gradient(145deg,#5c7f75,#89a79e)}
 .p7{background:linear-gradient(145deg,#6c1f21,#9e4039)}
-.p8{background:linear-gradient(145deg,#5a4a86,#7657a7)}
 .lifecycle-link{
   margin-top:20px;padding-top:14px;border-top:1px solid var(--line);
   text-align:center;color:var(--coral);font-weight:600
@@ -210,6 +237,23 @@ h1 em{color:var(--coral);font-weight:300}
 
 /* CONTENT CARDS */
 .content-band{padding:0 0 14px;background:var(--paper-2)}
+.about-band{padding:8px 0 34px;background:var(--paper-2)}
+.about-panel{
+  background:var(--paper);border:1px solid var(--line);border-radius:14px;
+  padding:34px 38px;box-shadow:0 8px 25px rgba(7,29,54,.04);
+  display:grid;grid-template-columns:1fr 1fr;gap:36px;
+}
+.about-panel h3{font-family:"Fraunces",serif;font-size:1.3rem;font-weight:600;color:var(--navy);margin-bottom:10px}
+.about-panel p{font-size:.92rem;color:var(--navy-2);line-height:1.65;margin-bottom:12px}
+.about-license{
+  margin-top:14px;padding-top:14px;border-top:1px solid var(--line);
+  font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--muted);line-height:1.6;
+}
+.about-license b{color:var(--navy-2)}
+.contrib-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:4px}
+.contrib-list li{font-size:.88rem;color:var(--navy-2);display:flex;gap:10px;align-items:flex-start}
+.contrib-list li:before{content:"→";color:var(--coral);font-weight:700;flex-shrink:0}
+@media (max-width:900px){.about-panel{grid-template-columns:1fr}}
 .cards{
   display:grid;grid-template-columns:1.05fr 1.1fr 1.1fr 1.2fr;gap:14px
 }
@@ -217,6 +261,8 @@ h1 em{color:var(--coral);font-weight:300}
   background:var(--paper);border:1px solid var(--line);border-radius:12px;
   padding:20px;min-height:184px;box-shadow:0 8px 25px rgba(7,29,54,.04)
 }
+a.card{display:block;text-decoration:none;color:inherit;transition:transform .2s, box-shadow .2s}
+a.card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(7,29,54,.10);border-color:var(--coral)}
 .card-top{display:flex;gap:14px;align-items:flex-start}
 .card-icon{
   width:48px;height:48px;border-radius:8px;border:1px solid var(--line);
@@ -266,6 +312,16 @@ h1 em{color:var(--coral);font-weight:300}
 .std small{opacity:.78;font-size:.65rem;margin-top:2px}
 
 /* FOOTER */
+.proto-badge{
+  font-family:"JetBrains Mono",monospace; font-size:.66rem; font-weight:700; letter-spacing:.06em;
+  text-transform:uppercase; padding:3px 9px; border-radius:20px;
+  background:var(--wine); color:#fff; margin-left:2px; vertical-align:middle;
+}
+.proto-banner{
+  background:#fbeaea; border-bottom:1px solid #e8c4c2; text-align:center;
+  padding:8px 16px; font-size:.82rem; color:var(--wine);
+}
+.proto-banner b{font-weight:700}
 footer{
   background:var(--paper-3);border-top:1px solid var(--line);
   color:var(--muted);padding:18px 0;text-align:center;
@@ -292,118 +348,6 @@ footer{
   .cards{grid-template-columns:1fr}
   .standards-bar{grid-template-columns:1fr 1fr}
 }
-
-
-.proto-badge{
-  font-family:"JetBrains Mono",monospace; font-size:.66rem; font-weight:700; letter-spacing:.06em;
-  text-transform:uppercase; padding:3px 9px; border-radius:20px;
-  background:var(--wine); color:#fff; margin-left:2px; vertical-align:middle;
-}
-.proto-banner{
-  background:#fbeaea; border-bottom:1px solid #e8c4c2; text-align:center;
-  padding:8px 16px; font-size:.82rem; color:var(--wine);
-}
-.proto-banner b{font-weight:700}
-.dl-pending{font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--muted);font-style:italic}
-/* BREADCRUMB */
-.crumb-bar{background:var(--paper-3);border-bottom:1px solid var(--line);padding:12px 0}
-.crumb{font-family:"JetBrains Mono",monospace;font-size:.74rem;color:var(--muted);display:flex;align-items:center;gap:8px}
-.crumb a{color:var(--sage);font-weight:700}
-.crumb a:hover{color:var(--coral)}
-
-/* PAGE HEADER (simpler hero for sub-pages) */
-.page-header{background:linear-gradient(180deg,var(--paper) 0%,#fffaf4 100%);padding:44px 0 34px}
-.page-header .kicker{margin-bottom:14px}
-.page-header h1{font-size:clamp(2.2rem,4vw,3.2rem);margin-bottom:14px}
-.page-header .hero-sub{margin-bottom:0}
-.phase-icon-lg{
-  width:76px;height:76px;border-radius:18px;display:grid;place-items:center;color:#fff;
-  box-shadow:inset 0 0 0 2px rgba(255,255,255,.3),0 8px 20px rgba(7,29,54,.16);margin-bottom:20px
-}
-.phase-icon-lg svg{width:36px;height:36px;stroke-width:1.8}
-.page-meta{display:flex;gap:34px;margin-top:22px;flex-wrap:wrap}
-.page-meta-item{font-family:"JetBrains Mono",monospace;font-size:.74rem;color:var(--muted)}
-.page-meta-item b{display:block;font-family:"Fraunces",serif;font-size:1.5rem;font-weight:600;color:var(--navy)}
-
-/* MATRIX LIST */
-.matrix-wrap{padding:8px 0 40px;background:var(--paper-2)}
-.matrix-list{display:flex;flex-direction:column;gap:12px}
-.matrix-row{
-  display:grid;grid-template-columns:64px 1.3fr 2.1fr 100px 90px;gap:20px;align-items:center;
-  background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 20px;
-  box-shadow:0 8px 25px rgba(7,29,54,.04);transition:.25s
-}
-.matrix-row:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(7,29,54,.10);border-color:var(--coral)}
-.matrix-icon{width:52px;height:52px;border-radius:10px;display:grid;place-items:center;color:#fff}
-.matrix-icon svg{width:24px;height:24px;stroke-width:1.8}
-.matrix-name{font-family:"Fraunces",serif;font-size:1.15rem;font-weight:600;color:var(--navy)}
-.matrix-name .sub{display:block;font-family:"JetBrains Mono",monospace;font-size:.7rem;color:var(--coral);font-weight:400;margin-top:2px}
-.matrix-desc{font-size:.85rem;color:var(--muted);line-height:1.5}
-.matrix-count{text-align:center;font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--muted)}
-.matrix-count b{display:block;font-family:"Fraunces",serif;font-size:1.3rem;color:var(--navy)}
-.matrix-go{text-align:right;font-family:"JetBrains Mono",monospace;font-size:.78rem;color:var(--sage);font-weight:700}
-
-/* ARTIFACT GRID (phase detail pages) */
-.artifact-wrap{padding:10px 0 40px;background:var(--paper-2)}
-.artifact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.a-card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:20px;box-shadow:0 8px 25px rgba(7,29,54,.04);transition:.25s}
-.a-card:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(7,29,54,.10);border-color:var(--coral)}
-.a-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:10px}
-.a-name{font-family:"Fraunces",serif;font-size:1.08rem;font-weight:600;color:var(--navy);line-height:1.3}
-.fmt-badge{font-family:"JetBrains Mono",monospace;font-size:.66rem;padding:4px 9px;border-radius:5px;border:1px solid var(--line);color:var(--muted);background:var(--paper-2);white-space:nowrap;flex-shrink:0}
-.fmt-badge.excel{color:var(--sage);border-color:var(--sage)}
-.a-desc{font-size:.83rem;color:var(--muted);line-height:1.5;margin-bottom:16px;min-height:2.5rem}
-.a-actions{display:flex;padding-top:14px;border-top:1px solid var(--line)}
-.btn-dl{font-family:"JetBrains Mono",monospace;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;background:var(--navy);color:#fff;padding:9px 15px;border-radius:6px;display:inline-flex;align-items:center;gap:6px;transition:.2s}
-.btn-dl:hover{background:var(--coral);transform:translateY(-1px)}
-
-/* PREV/NEXT */
-.pagenav{display:flex;justify-content:space-between;padding:8px 0 6px;font-family:"JetBrains Mono",monospace;font-size:.82rem;font-weight:700}
-.pagenav a{color:var(--sage)}
-.pagenav a:hover{color:var(--coral)}
-
-@media (max-width:900px){
-  .matrix-row{grid-template-columns:1fr;text-align:left;gap:8px}
-  .matrix-go,.matrix-count{text-align:left}
-  .artifact-grid{grid-template-columns:1fr}
-}
-
-
-.about-band{padding:8px 0 34px;background:var(--paper-2)}
-.about-panel{
-  background:var(--paper);border:1px solid var(--line);border-radius:14px;
-  padding:34px 38px;box-shadow:0 8px 25px rgba(7,29,54,.04);
-  display:grid;grid-template-columns:1fr 1fr;gap:36px;
-}
-.about-panel h3{font-family:"Fraunces",serif;font-size:1.3rem;font-weight:600;color:var(--navy);margin-bottom:10px}
-.about-panel p{font-size:.92rem;color:var(--navy-2);line-height:1.65;margin-bottom:12px}
-.about-license{
-  margin-top:14px;padding-top:14px;border-top:1px solid var(--line);
-  font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--muted);line-height:1.6;
-}
-.about-license b{color:var(--navy-2)}
-@media (max-width:900px){ .about-panel{grid-template-columns:1fr} }
-.author-card{margin-top:18px;text-align:center}
-.author-photo{
-  width:230px;height:230px;border-radius:50%;object-fit:cover;
-  box-shadow:0 8px 22px rgba(7,29,54,.18);
-  margin:0 auto 18px;display:block;
-}
-.author-quote{
-  font-family:"Fraunces",serif;font-style:italic;font-size:1.05rem;
-  color:var(--navy);line-height:1.5;max-width:320px;margin:0 auto 14px;
-}
-.author-quote:before{content:"\201C";color:var(--coral);font-size:1.6rem;font-style:normal;margin-right:2px;line-height:0;vertical-align:-6px}
-.author-cert{
-  font-family:"JetBrains Mono",monospace;font-size:.68rem;font-weight:700;letter-spacing:.04em;
-  padding:4px 10px;border-radius:20px;border:1px solid var(--line);color:var(--navy-2);background:var(--paper-2);
-}
-.author-certs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
-.author-name{font-family:"Fraunces",serif;font-weight:600;font-size:1rem;color:var(--navy);margin-bottom:2px}
-.author-title{font-size:.82rem;color:var(--muted);margin-bottom:8px}
-.contrib-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:4px}
-.contrib-list li{font-size:.88rem;color:var(--navy-2);display:flex;gap:10px;align-items:flex-start}
-.contrib-list li:before{content:"\2192";color:var(--coral);font-weight:700;flex-shrink:0}
 </style>
 </head>
 
@@ -585,12 +529,12 @@ footer{
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v4h4M9 11h6M9 15h6"/></svg>
           </div>
           <div>
-            <div class="label">What's Inside</div>
-            <div class="big-number">44</div>
-            <p>Ready-to-use artifacts and templates</p>
+            <div class="label">Implementation Toolkit</div>
+            <h3>Practical &amp; Reusable</h3>
+            <p>Artifacts, decision points, controls, and supporting resources across the AI lifecycle</p>
           </div>
         </div>
-        <small>Comprehensive, customizable documents for every phase.</small>
+        <small>Representative examples are shared publicly; the broader implementation toolkit can be tailored to organizational needs.</small>
       </article>
 
       <article class="card">
@@ -613,12 +557,12 @@ footer{
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3l7 3v5c0 4.6-2.8 8.1-7 10-4.2-1.9-7-5.4-7-10V6l7-3z"/><path d="M8.7 12l2 2 4.6-5"/></svg>
           </div>
           <div>
-            <div class="label">Compliance by Design</div>
-            <h3>Regulatory &amp; Ethical</h3>
-            <p>17 sources, clause-by-clause</p>
+            <div class="label">Regulatory Traceability</div>
+            <h3>Standards to Execution</h3>
+            <p>17 regulatory, standards, and guidance sources mapped to delivery practice</p>
           </div>
         </div>
-        <small>See exactly what each regulation requires, and which artifact section addresses it &rarr;</small>
+        <small>See how requirements translate into specific delivery controls, artifacts, and evidence &rarr;</small>
       </a>
 
       <article class="card">
@@ -656,35 +600,38 @@ footer{
           AI doesn't have a guidance problem &mdash; we have strong foundations in <b>NIST, ISO/IEC, OWASP, the EU AI
           Act, HIPAA, GDPR, OECD</b>, and more. The challenge is translating that guidance into requirements, risk
           assessments, design reviews, testing, deployment gates, and monitoring that teams can actually use. This
-          <b>playbook and community of practice</b> are my contribution to closing that gap &mdash; curating,
-          connecting, and translating existing guidance into practical resources, while crediting the organizations
-          behind it.
+          <b>playbook</b> is my contribution to closing that gap &mdash; curating, connecting, and translating
+          existing guidance into practical delivery practices, while crediting the organizations behind it.
         </p>
         <p style="margin-top:14px; font-size:.85rem; color:var(--navy-2);">
           <b>Responsible AI shouldn't live only in policy documents &mdash; it should be woven into everyday
           practice.</b>
         </p>
         <div class="about-license">
-          <b>License:</b> This playbook is shared under CC BY-NC 4.0 &mdash; free to use, adapt, and share with
-          attribution, for non-commercial purposes. Commercial use or resale requires permission.
+          <b>Use:</b> This public prototype is shared for demonstration, feedback, and discussion. Selected examples
+          illustrate the approach; implementation materials, customization, and broader toolkit access are not
+          granted through publication of this site.
         </div>
       </div>
       <div>
-        <h3>Join the Community of Practice</h3>
+        <h3>Put the Playbook to Work</h3>
         <p>
-          This playbook works best as a living body of practice, not a static document.
+          Every organization has a different AI risk profile, operating model, regulatory environment, and level of
+          maturity. The public playbook demonstrates the framework and selected examples; implementation can be
+          adapted to the context of a specific organization or AI initiative.
         </p>
         <ul class="contrib-list">
-          <li>Bring a worked example &mdash; apply the playbook to your own AI system and share what you found</li>
-          <li>Challenge the framework &mdash; tell me where a phase, tier, or artifact doesn't hold up in practice</li>
-          <li>Flag a regulatory citation that needs updating as the landscape shifts</li>
-          <li>Propose a missing deliverable or an edge case the current set doesn't cover</li>
+          <li>Apply the framework to an AI initiative or portfolio</li>
+          <li>Assess gaps in an existing AI delivery lifecycle</li>
+          <li>Tailor governance, risk, evidence, and decision controls</li>
+          <li>Develop fit-for-purpose implementation artifacts and operating practices</li>
+          <li>Facilitate AI delivery and governance working sessions</li>
         </ul>
         <p style="margin-top:14px; font-size:.85rem; color:var(--navy-2);">
-          This community is just getting started &mdash; early contributors shape what it becomes.
+          Interested in exploring how the playbook could apply in your environment?
         </p>
-        <a href="mailto:mfebus@gmail.com?subject=Joining%20the%20AI%20Solutions%20Delivery%20Playbook%20Community" class="btn btn-dark" style="margin-top:16px; display:inline-flex;">
-          Contact Me to Contribute &rarr;
+        <a href="mailto:mfebus@gmail.com?subject=AI%20Solutions%20Delivery%20Playbook%20Discussion" class="btn btn-dark" style="margin-top:16px; display:inline-flex;">
+          Let&apos;s Talk &rarr;
         </a>
       </div>
     </div>
@@ -712,7 +659,7 @@ footer{
 
 <footer>
   <div class="container">
-    © 2026 AI Solutions Delivery Playbook · Part of the Beyond the Model series · Maria Febus
+    © 2026 Maria Febus · AI Solutions Delivery Playbook · Part of the Beyond the Model series · All rights reserved.
   </div>
 </footer>
 </body>
