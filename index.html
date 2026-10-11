@@ -1509,37 +1509,40 @@ section[id] {
         <div class="project-content">
           <div class="project-meta">
             <span class="flagship-badge">Capstone</span>
-            <span>Expected August 2026</span>
+            <span>Expected December 2026</span>
       </div>
-          <h3>Medication Adherence Segmentation</h3>
+          <h3>Predicting Statin Discontinuation Risk</h3>
           <p class="project-clinical">
-            A combined supervised and unsupervised learning approach to segment patients by
-            medication adherence patterns. Target Audience: Health plans, pharmaceutical patient support programs, providers, care management organizations, 
-            and value-based care teams seeking to personalize patient engagement and improve medication adherence.
+           An early-warning system that flags established statin users at risk of stopping therapy, explains what’s driving that risk, and drafts a grounded next 
+           step for a pharmacist or care manager to review. Built for health plans, pharmaceutical patient-support programs, providers, care management 
+           organizations, and value-based care teams.
           </p>
           <div class="project-pai">
             <div class="pai-row">
               <div class="pai-label">Problem</div>
-              <div class="pai-text">Non-adherence costs the US healthcare system over $300B annually, yet most interventions treat all non-adherent patients alike — missing the distinct behavioral patterns that drive different solutions.</div>
+              <div class="pai-text">Non-adherence costs the US healthcare system an estimated $100–300B annually, mostly through avoidable hospitalizations, ER visits, and complications from uncontrolled disease. 
+                Statins, meant to be taken long-term, are a costly example. Yet most interventions treat all non-adherent patients alike, missing the distinct barriers, like out-of-pocket cost or medication burden, 
+                that call for different solutions.</div>
             </div>
             <div class="pai-row">
               <div class="pai-label">Approach</div>
-              <div class="pai-text">Combined unsupervised clustering to discover adherence archetypes, then supervised classification to assign new patients to the segment most likely to predict their behavior.</div>
+              <div class="pai-text">A supervised machine learning model will estimate each patient’s risk of discontinuing statin therapy using Medical Expenditure Panel Survey (MEPS) data, 
+                with an emphasis on calibration, explainability, and fairness across patient subgroups. An agentic AI workflow will then use retrieval-augmented generation (RAG) to translate each patient’s risk drivers into 
+                a guideline-grounded next action, which a pharmacist or care manager approves, edits, or rejects.</div>
             </div>
             <div class="pai-row">
               <div class="pai-label">Impact</div>
-              <div class="pai-text">A foundation for tailored adherence interventions — informing pharmacy programs, patient support design, and real-world evidence studies with behavioral nuance most models miss.</div>
+              <div class="pai-text">This project aims to shift statin adherence support from reactive to proactive, and from uniform outreach to interventions tailored to each patient's barriers. By pairing interpretable risk predictions with guideline-grounded, 
+                human-reviewed recommendations, it offers a prototype for how predictive and agentic AI can responsibly support care teams, delivered through an interactive Streamlit application.</div>
             </div>
           </div>
           <div class="project-tech">
-            <span class="tech-tag">Clustering</span>
             <span class="tech-tag">Classification</span>
-            <span class="tech-tag">Feature Engineering</span>
-            <span class="tech-tag">scikit-learn</span>
-          </div>
-          <div class="project-links">
-            <a href="#" target="_blank" rel="noopener" class="project-link">Coming August 2026</a>
-            <a href="https://raw.githubusercontent.com/mfebus/mfebus.github.io/main/Medication Adherence Segmentation - UX Prototype.pdf" target="_blank" rel="noopener" class="project-link">View Medication Adherence UX Mockup</a>
+            <span class="tech-tag">Explainable AI</span>
+            <span class="tech-tag">Fairness</span>
+            <span class="tech-tag">RAG</span>
+            <span class="tech-tag">Agentic AI</span>
+            <span class="tech-tag">MEPS</span>
           </div>
         </div>
       </div>
